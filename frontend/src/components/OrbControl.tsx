@@ -9,12 +9,7 @@ type OrbControlProps = {
   state: OrbState;
 };
 
-// ====================================================================
-// TODO: [MISSION 1] CUSTOMIZE YOUR ASSISTANT'S ORB LETTERMARK
-// Add your assistant's codename letters to this array!
-// Example: const letters = ["F", "R", "I", "D", "A", "Y"];
-// ====================================================================
-const letters: string[] = [];
+const letters = ["J", "A", "R", "V", "I", "S"];
 
 export function OrbControl({ disabled, onStart, onStop, state }: OrbControlProps) {
   const label = state === "listening" ? "Release to send" : state === "thinking" ? "Processing request" : state === "speaking" ? "Jarvis is responding" : "Hold to talk with Jarvis";

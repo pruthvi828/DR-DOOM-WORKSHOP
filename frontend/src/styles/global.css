@@ -1,20 +1,6 @@
-/* ====================================================================
-   TODO: [MISSION 1] CUSTOMIZE YOUR ASSISTANT'S NEON COLOR ACCENTS
-   Replace these muted default colors with vibrant neon accents!
-   ==================================================================== */
-:root {
-  --ink: #03050c;
-  --surface: rgba(5, 14, 30, .76);
-  --line: rgba(136, 153, 166, .35);
-  --cyan: #8899a6;    /* Muted starter color - Change in Mission 1! */
-  --ready: #71808a;   /* Muted status color - Change in Mission 1! */
-  --danger: #ff6b91;
-  color: #effaff;
-  background: var(--ink);
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  scrollbar-color: rgba(101, 233, 255, .58) rgba(3, 12, 25, .82);
-  scrollbar-width: thin;
-}
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root { --ink: #03050c; --surface: rgba(5, 14, 30, .76); --line: rgba(104, 235, 255, .52); --cyan: #65e9ff; --ready: #53f2c5; --danger: #ff6b91; color: #effaff; background: var(--ink); font-family: "Space Grotesk", system-ui, sans-serif; scrollbar-color: rgba(101, 233, 255, .58) rgba(3, 12, 25, .82); scrollbar-width: thin; }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; }
 button, input, select { font: inherit; }
