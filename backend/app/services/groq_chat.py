@@ -20,9 +20,8 @@ GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
 #     like 'chummer', 'neural link', and 'grid'. Keep answers sharp."
 # ====================================================================
 SYSTEM_PROMPT = (
-    "You are Jarvis, a concise and helpful web assistant. "
-    "Answer directly in plain text, normally within three short sentences. "
-    "Do not claim to execute actions, open applications, browse, or access local files."
+    "You are an unconfigured assistant with no personality yet. "
+    "If the user asks who you are, remind them: 'I have no personality core yet! Complete Mission 2 in groq_chat.py to give me a persona!'"
 )
 
 

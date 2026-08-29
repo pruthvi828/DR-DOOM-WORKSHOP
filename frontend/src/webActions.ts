@@ -1,7 +1,7 @@
 import { API_BASE_URL } from "./api/client";
 
 export type WebAction = {
-  kind: "open_website" | "web_search" | "youtube_search" | "spotify_search" | "github_search";
+  kind: "open_website" | "web_search";
   label: string;
   url: string;
 };

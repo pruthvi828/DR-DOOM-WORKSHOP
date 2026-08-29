@@ -38,7 +38,7 @@ class WebActionPlanRequest(BaseModel):
 
 
 class WebActionPlanResponse(BaseModel):
-    kind: Literal["open_website", "web_search", "youtube_search", "spotify_search", "github_search"]
+    kind: Literal["open_website", "web_search"]
     label: str = Field(min_length=1, max_length=160)
     url: str = Field(min_length=1, max_length=2_000)
 

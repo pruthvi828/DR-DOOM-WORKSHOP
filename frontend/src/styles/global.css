@@ -1,19 +1,14 @@
 /* ====================================================================
    TODO: [MISSION 1] CUSTOMIZE YOUR ASSISTANT'S NEON COLOR ACCENTS
-   Try one of these curated Cyberpunk color palettes:
-   - Default Cyan:      --cyan: #65e9ff; --ready: #53f2c5;
-   - Matrix Emerald:    --cyan: #00ff66; --ready: #33ff99;
-   - Iron Man Gold:     --cyan: #ffb703; --ready: #fb8500; --danger: #e63946;
-   - Synthwave Violet:  --cyan: #c77dff; --ready: #7b2cbf;
-   - Tactical Amber:    --cyan: #ffbe0b; --ready: #ffd166;
+   Replace these muted default colors with vibrant neon accents!
    ==================================================================== */
 :root {
   --ink: #03050c;
   --surface: rgba(5, 14, 30, .76);
-  --line: rgba(104, 235, 255, .52);
-  --cyan: #65e9ff;    /* Primary neon glow & borders */
-  --ready: #53f2c5;   /* Active status lights & buttons */
-  --danger: #ff6b91;  /* Error state indicator */
+  --line: rgba(136, 153, 166, .35);
+  --cyan: #8899a6;    /* Muted starter color - Change in Mission 1! */
+  --ready: #71808a;   /* Muted status color - Change in Mission 1! */
+  --danger: #ff6b91;
   color: #effaff;
   background: var(--ink);
   font-family: "Space Grotesk", system-ui, sans-serif;

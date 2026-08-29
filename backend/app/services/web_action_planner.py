@@ -9,18 +9,15 @@ from app.settings import settings
 
 # ====================================================================
 # TODO: [MISSION 6] ADD YOUR OWN CUSTOM SAFE WEB ACTION!
-# Step 1: Add your action name to PlanKind (e.g. "github_search")
+# Step 1: Add your action name to PlanKind (e.g. "youtube_search", "github_search")
 # Step 2: Add keyword detection in _fallback_classification
 # Step 3: Format the safe destination URL in make_web_action_plan
 # ====================================================================
-PlanKind = Literal["web_search", "youtube_search", "spotify_search", "github_search"]
+PlanKind = Literal["web_search"]
 
 PLANNER_PROMPT = """Classify a browser-navigation request. Return JSON only:
-{"kind":"web_search|youtube_search|spotify_search|github_search","query":"short search text"}.
-Use youtube_search for requests to find a YouTube video, song, audio, or channel.
-Use spotify_search for requests to find music, an artist, album, podcast, or playlist on Spotify.
-Use github_search for requests to find a GitHub repository, code, or profile.
-Use web_search for every other website/search request. Never return a URL, command,
+{"kind":"web_search","query":"short search text"}.
+Use web_search for website/search requests. Never return a URL, command,
 file path, app name, or explanation."""
 
 
@@ -39,13 +36,12 @@ def _fallback_classification(text: str) -> tuple[PlanKind, str]:
     lowered = text.lower()
     query = re.sub(r"\b(?:please|can you|could you|would you|open|launch|start|go to|play|find|search|on|for)\b", " ", text, flags=re.IGNORECASE)
     query = " ".join(query.split()) or text.strip()
-    if "youtube" in lowered or "you tube" in lowered:
-        return "youtube_search", query.replace("YouTube", "").replace("youtube", "").strip() or "YouTube"
-    if "spotify" in lowered:
-        return "spotify_search", query.replace("Spotify", "").replace("spotify", "").strip() or "Spotify"
-    # [MISSION 6] Detect GitHub search request
-    if "github" in lowered or "git hub" in lowered:
-        return "github_search", query.replace("GitHub", "").replace("github", "").strip() or "GitHub"
+    # ====================================================================
+    # TODO: [MISSION 6] Add your custom action intent detection here!
+    # Example:
+    # if "github" in lowered or "git hub" in lowered:
+    #     return "github_search", query.replace("GitHub", "").replace("github", "").strip() or "GitHub"
+    # ====================================================================
     return "web_search", query
 
 
@@ -70,7 +66,7 @@ def _model_classification(text: str) -> tuple[PlanKind, str] | None:
         parsed = json.loads(content)
         kind = parsed.get("kind")
         query = parsed.get("query")
-        if kind in {"web_search", "youtube_search", "spotify_search"} and isinstance(query, str) and query.strip():
+        if kind in {"web_search"} and isinstance(query, str) and query.strip():
             return kind, query.strip()[:300]
     except (requests.RequestException, KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError):
         pass
@@ -83,10 +79,10 @@ def make_web_action_plan(text: str) -> dict[str, str]:
         return {"kind": "open_website", "label": urlparse(explicit_url).hostname or "Website", "url": explicit_url}
 
     kind, query = _model_classification(text) or _fallback_classification(text)
-    if kind == "youtube_search":
-        return {"kind": kind, "label": f"YouTube search: {query}", "url": f"https://www.youtube.com/results?search_query={quote_plus(query)}"}
-    if kind == "spotify_search":
-        return {"kind": kind, "label": f"Spotify search: {query}", "url": f"https://open.spotify.com/search/{quote_plus(query)}"}
-    if kind == "github_search":
-        return {"kind": kind, "label": f"GitHub search: {query}", "url": f"https://github.com/search?q={quote_plus(query)}"}
+    # ====================================================================
+    # TODO: [MISSION 6] Add your custom safe destination URL builders here!
+    # Example:
+    # if kind == "github_search":
+    #     return {"kind": kind, "label": f"GitHub search: {query}", "url": f"https://github.com/search?q={quote_plus(query)}"}
+    # ====================================================================
     return {"kind": kind, "label": f"Web search: {query}", "url": f"https://www.google.com/search?q={quote_plus(query)}"}

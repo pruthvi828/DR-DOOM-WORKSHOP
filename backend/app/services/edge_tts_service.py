@@ -16,11 +16,7 @@ from app.schemas import Voice
 # - Voice(id="en-CA-LiamNeural", label="Liam — Canadian English")
 # ====================================================================
 VOICES = (
-    Voice(id="en-US-GuyNeural", label="Guy — US English"),
-    Voice(id="en-GB-RyanNeural", label="Ryan — UK English"),
-    Voice(id="en-US-JennyNeural", label="Jenny — US English"),
-    Voice(id="en-GB-SoniaNeural", label="Sonia — UK English (Sophisticated)"),
-    Voice(id="en-IN-NeerjaNeural", label="Neerja — Indian English"),
+    Voice(id="en-US-GuyNeural", label="Default Voice (Unconfigured)"),
 )
 VOICE_IDS = {voice.id for voice in VOICES}
 
