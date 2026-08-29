@@ -338,3 +338,11 @@ git push -u origin main
 1. **Accent Colors**: Open rontend/src/styles/global.css (lines 10–15) and set your neon colors (--cyan, --ready).
 2. **Orb Letters**: Open rontend/src/components/OrbControl.tsx (line 14) and set your lettermarks: const letters = ["F","R","I","D","A","Y"];.
 3. **Branding Header**: Open rontend/src/App.tsx (line 280) and set your codename <p className="jarvis-brand">FRIDAY</p>.
+
+---
+
+## ⚡ Level 2: Bounded Memory Template
+
+### Student Task:
+1. Open ackend/app/services/conversation.py.
+2. Observe MAX_TURNS = 6. Test multi-turn conversations and inspect how the sliding memory window works.
